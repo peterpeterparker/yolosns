@@ -3,6 +3,7 @@ import { SnsGovernanceCanister, SnsNeuronPermissionType } from "@dfinity/sns";
 import { Principal } from "@dfinity/principal";
 import { AuthClient } from "@dfinity/auth-client";
 import {IcrcLedgerCanister} from "@dfinity/ledger";
+import {Tokens} from "@dfinity/ledger/dist/candid/icrc1_ledger";
 
 export { SnsGovernanceCanister } from "@dfinity/sns";
 
@@ -45,7 +46,7 @@ export const addControllerToMyNeurons = async ({canisterId, principal}: {caniste
   return x;
 };
 
-export const transfer = async ({ledgerCanisterId, owner, amount}: {ledgerCanisterId: string, owner: string, amount: bigint}) => {
+export const transfer = async ({ledgerCanisterId, owner, amount, fee}: {ledgerCanisterId: string, owner: string, amount: bigint, fee?: bigint}) => {
   const authClient = await createAuthClient();
 
   const agent = new HttpAgent({
@@ -60,7 +61,8 @@ export const transfer = async ({ledgerCanisterId, owner, amount}: {ledgerCaniste
 
   await transfer({
     to: {owner: Principal.fromText(owner), subaccount: []},
-    amount
+    amount,
+    fee
   });
 
 }
