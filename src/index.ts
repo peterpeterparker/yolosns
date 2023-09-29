@@ -2,6 +2,7 @@ import { HttpAgent } from "@dfinity/agent";
 import { SnsGovernanceCanister, SnsNeuronPermissionType } from "@dfinity/sns";
 import { Principal } from "@dfinity/principal";
 import { AuthClient } from "@dfinity/auth-client";
+import {IcrcLedgerCanister} from "@dfinity/ledger";
 
 export { SnsGovernanceCanister } from "@dfinity/sns";
 
@@ -13,7 +14,7 @@ const createAuthClient = (): Promise<AuthClient> =>
     },
   });
 
-export const addControllerToMyNeurons = async (canisterId: string, principal: string) => {
+export const addControllerToMyNeurons = async ({canisterId, principal}: {canisterId: string, principal: string}) => {
   const authClient = await createAuthClient();
 
   const agent = new HttpAgent({
@@ -43,3 +44,23 @@ export const addControllerToMyNeurons = async (canisterId: string, principal: st
 
   return x;
 };
+
+export const transfer = async ({ledgerCanisterId, owner, amount}: {ledgerCanisterId: string, owner: string, amount: bigint}) => {
+  const authClient = await createAuthClient();
+
+  const agent = new HttpAgent({
+    host: "https://icp-api.io",
+    identity: authClient.getIdentity(),
+  });
+
+  const { transfer } = IcrcLedgerCanister.create({
+    agent,
+    canisterId: Principal.fromText(ledgerCanisterId),
+  });
+
+  await transfer({
+    to: {owner: Principal.fromText(owner), subaccount: []},
+    amount
+  });
+
+}
