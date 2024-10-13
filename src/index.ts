@@ -5,6 +5,7 @@ import type { CanisterStatusResponse } from "@dfinity/ic-management/dist/types/t
 import { IcrcLedgerCanister } from "@dfinity/ledger-icrc";
 import { Principal } from "@dfinity/principal";
 import { SnsGovernanceCanister, SnsNeuronPermissionType } from "@dfinity/sns";
+import { assertNonNullish } from "@dfinity/utils";
 
 export { SnsGovernanceCanister } from "@dfinity/sns";
 
@@ -107,4 +108,36 @@ export const canisterStatus = async ({
   const cId = Principal.fromText(canisterId);
 
   return await canisterStatusApi(cId);
+};
+
+export const addController = async ({
+  canisterId,
+  controllerId,
+}: {
+  canisterId: string;
+  controllerId: string;
+}): Promise<void> => {
+  // Cannot happen in TypeScript but, can when used in the console if developer do not pass the appropriate parameters
+  assertNonNullish(controllerId);
+  assertNonNullish(canisterId);
+
+  const { agent } = await createClient();
+
+  const { updateSettings, canisterStatus: canisterStatusApi } =
+    ICManagementCanister.create({
+      agent,
+    });
+
+  const cId = Principal.fromText(canisterId);
+
+  const {
+    settings: { controllers },
+  } = await canisterStatusApi(cId);
+
+  await updateSettings({
+    canisterId: cId,
+    settings: {
+      controllers: [...controllers.map((c) => c.toText()), controllerId],
+    },
+  });
 };
