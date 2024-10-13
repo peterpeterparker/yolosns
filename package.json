@@ -1,6 +1,6 @@
 {
   "name": "yolosns",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "main": "dist/cjs/index.cjs.js",
   "module": "dist/esm/index.js",
@@ -17,20 +17,20 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@dfinity/agent": "^2.1.2",
-    "@dfinity/auth-client": "^2.1.2",
-    "@dfinity/candid": "^2.1.2",
-    "@dfinity/ic-management": "^5.2.2",
-    "@dfinity/ledger-icrc": "^2.6.1",
-    "@dfinity/principal": "^2.1.2",
-    "@dfinity/sns": "^3.2.2",
-    "@dfinity/utils": "^2.5.2",
+  "devDependencies": {
     "esbuild": "^0.24.0",
+    "pretier": "^0.0.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "^5.6.3"
   },
-  "devDependencies": {
-    "pretier": "^0.0.1",
-    "prettier-plugin-organize-imports": "^4.1.0"
+  "dependencies": {
+    "@dfinity/agent": "^2.0.0",
+    "@dfinity/auth-client": "^2.0.0",
+    "@dfinity/candid": "^2.0.0",
+    "@dfinity/ic-management": "^5.2.2",
+    "@dfinity/ledger-icrc": "^2.6.1",
+    "@dfinity/principal": "^2.0.0",
+    "@dfinity/sns": "^3.2.2",
+    "@dfinity/utils": "^2.5.2"
   }
 }
