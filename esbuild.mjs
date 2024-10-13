@@ -3,7 +3,6 @@ import {
   existsSync,
   mkdirSync,
   readdirSync,
-  readFileSync,
   statSync,
   writeFileSync,
 } from "fs";
