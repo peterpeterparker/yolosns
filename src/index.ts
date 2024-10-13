@@ -1,5 +1,6 @@
 import { HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
+import { ICManagementCanister } from "@dfinity/ic-management";
 import { IcrcLedgerCanister } from "@dfinity/ledger-icrc";
 import { Principal } from "@dfinity/principal";
 import { SnsGovernanceCanister, SnsNeuronPermissionType } from "@dfinity/sns";
@@ -89,4 +90,18 @@ export const transfer = async ({
     amount,
     fee,
   });
+};
+
+export const canisterStatus = async ({
+  canisterId,
+}: {
+  canisterId: string;
+}) => {
+  const { agent } = await createClient();
+
+  const { canisterStatus } = ICManagementCanister.create({
+    agent,
+  });
+
+  console.log("Status:", await canisterStatus(Principal.fromText(canisterId)));
 };
