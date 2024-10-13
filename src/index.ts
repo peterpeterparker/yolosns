@@ -103,8 +103,9 @@ export const canisterStatus = async ({
     agent,
   });
 
-  console.log(
-    "Status:",
-    await canisterStatusApi(Principal.fromText(canisterId)),
-  );
+  const cId = Principal.fromText(canisterId);
+
+  const result = await canisterStatusApi(cId);
+
+  console.log("Status:", result);
 };
