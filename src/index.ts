@@ -95,10 +95,8 @@ export const transfer = async ({
 
 export const canisterStatus = async ({
   canisterId,
-  log = true,
 }: {
   canisterId: string;
-  log?: boolean;
 }): Promise<CanisterStatusResponse> => {
   const { agent } = await createClient();
 
@@ -108,11 +106,5 @@ export const canisterStatus = async ({
 
   const cId = Principal.fromText(canisterId);
 
-  const result = await canisterStatusApi(cId);
-
-  if (log) {
-    console.log("Status:", result);
-  }
-
-  return result;
+  return await canisterStatusApi(cId);
 };
