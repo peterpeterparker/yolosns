@@ -1,6 +1,7 @@
 import { HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
 import { ICManagementCanister } from "@dfinity/ic-management";
+import type { CanisterStatusResponse } from "@dfinity/ic-management/dist/types/types/ic-management.responses";
 import { IcrcLedgerCanister } from "@dfinity/ledger-icrc";
 import { Principal } from "@dfinity/principal";
 import { SnsGovernanceCanister, SnsNeuronPermissionType } from "@dfinity/sns";
@@ -94,9 +95,11 @@ export const transfer = async ({
 
 export const canisterStatus = async ({
   canisterId,
+  log = true,
 }: {
   canisterId: string;
-}) => {
+  log?: boolean;
+}): Promise<CanisterStatusResponse> => {
   const { agent } = await createClient();
 
   const { canisterStatus: canisterStatusApi } = ICManagementCanister.create({
@@ -107,5 +110,9 @@ export const canisterStatus = async ({
 
   const result = await canisterStatusApi(cId);
 
-  console.log("Status:", result);
+  if (log) {
+    console.log("Status:", result);
+  }
+
+  return result;
 };
