@@ -99,9 +99,12 @@ export const canisterStatus = async ({
 }) => {
   const { agent } = await createClient();
 
-  const { canisterStatus } = ICManagementCanister.create({
+  const { canisterStatus: canisterStatusApi } = ICManagementCanister.create({
     agent,
   });
 
-  console.log("Status:", await canisterStatus(Principal.fromText(canisterId)));
+  console.log(
+    "Status:",
+    await canisterStatusApi(Principal.fromText(canisterId)),
+  );
 };
