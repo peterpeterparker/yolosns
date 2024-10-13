@@ -1,6 +1,6 @@
 {
   "name": "yolosns",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "",
   "main": "dist/cjs/index.cjs.js",
   "module": "dist/esm/index.js",
@@ -24,12 +24,12 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@dfinity/agent": "^2.0.0",
-    "@dfinity/auth-client": "^2.0.0",
-    "@dfinity/candid": "^2.0.0",
+    "@dfinity/agent": "^1.4.0",
+    "@dfinity/auth-client": "^1.4.0",
+    "@dfinity/candid": "^1.4.0",
     "@dfinity/ic-management": "^5.2.2",
     "@dfinity/ledger-icrc": "^2.6.1",
-    "@dfinity/principal": "^2.0.0",
+    "@dfinity/principal": "^1.4.0",
     "@dfinity/sns": "^3.2.2",
     "@dfinity/utils": "^2.5.2"
   }
