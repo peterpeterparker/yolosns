@@ -5,8 +5,8 @@ import {
   readdirSync,
   statSync,
   writeFileSync,
-} from "fs";
-import { join } from "path";
+} from "node:fs";
+import { join } from "node:path";
 
 const dist = join(process.cwd(), "dist");
 
