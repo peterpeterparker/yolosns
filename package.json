@@ -13,24 +13,25 @@
     "rmdir": "node ./rmdir.mjs",
     "ts-declaration": "tsc --emitDeclarationOnly --outDir dist/types",
     "build": "npm run rmdir && node esbuild.mjs && npm run ts-declaration",
+    "export": "node export.mjs",
     "format": "prettier --write '.'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.27.0",
     "pretier": "^0.0.1",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "typescript": "^5.6.3"
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@dfinity/agent": "^1.4.0",
-    "@dfinity/auth-client": "^1.4.0",
-    "@dfinity/candid": "^1.4.0",
-    "@dfinity/ic-management": "^5.2.2",
-    "@dfinity/ledger-icrc": "^2.6.1",
-    "@dfinity/principal": "^1.4.0",
-    "@dfinity/sns": "^3.2.2",
-    "@dfinity/utils": "^2.5.2"
+    "@dfinity/agent": "^3.4.2",
+    "@dfinity/auth-client": "^3.4.2",
+    "@dfinity/candid": "^3.4.2",
+    "@dfinity/ic-management": "^9.0.0",
+    "@dfinity/ledger-icrc": "^6.0.0",
+    "@dfinity/principal": "^3.4.2",
+    "@dfinity/sns": "^6.0.0",
+    "@dfinity/utils": "^4.0.1"
   }
 }

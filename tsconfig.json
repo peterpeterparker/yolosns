@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
+    "module": "esnext",
     "target": "esnext",
-    "module": "commonjs",
+    "lib": ["esnext", "dom"],
     "strict": true,
     "declaration": true,
+    "moduleResolution": "bundler",
     "outDir": "./dist",
     "esModuleInterop": true,
-    "lib": ["dom", "esnext"],
-    "isolatedModules": true
+    "isolatedModules": true,
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "**/src/**/*.test.ts",
-    "**/src/**/*.spec.ts",
-    "**/src/**/*.mock.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }

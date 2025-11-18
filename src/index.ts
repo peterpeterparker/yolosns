@@ -1,7 +1,7 @@
 import { HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
 import { ICManagementCanister } from "@dfinity/ic-management";
-import type { CanisterStatusResponse } from "@dfinity/ic-management/dist/types/types/ic-management.responses";
+import type { CanisterStatusResponse } from "@dfinity/ic-management";
 import { IcrcLedgerCanister } from "@dfinity/ledger-icrc";
 import { Principal } from "@dfinity/principal";
 import { SnsGovernanceCanister, SnsNeuronPermissionType } from "@dfinity/sns";
@@ -107,7 +107,7 @@ export const canisterStatus = async ({
 
   const cId = Principal.fromText(canisterId);
 
-  return await canisterStatusApi(cId);
+  return await canisterStatusApi({canisterId: cId});
 };
 
 export const addController = async ({
@@ -132,7 +132,7 @@ export const addController = async ({
 
   const {
     settings: { controllers },
-  } = await canisterStatusApi(cId);
+  } = await canisterStatusApi({canisterId: cId});
 
   await updateSettings({
     canisterId: cId,
