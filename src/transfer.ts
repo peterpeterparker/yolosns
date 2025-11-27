@@ -17,7 +17,7 @@ const createClient = async (): Promise<{
 }> => {
   const authClient = await createAuthClient();
 
-  const agent = new HttpAgent({
+  const agent = await HttpAgent.create({
     host: "https://icp-api.io",
     identity: authClient.getIdentity(),
   });
