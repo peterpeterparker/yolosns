@@ -25,13 +25,9 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@dfinity/agent": "^3.4.2",
-    "@dfinity/auth-client": "^3.4.2",
-    "@dfinity/candid": "^3.4.2",
-    "@dfinity/ic-management": "^9.0.0",
-    "@dfinity/ledger-icrc": "^6.0.0",
-    "@dfinity/principal": "^3.4.2",
-    "@dfinity/sns": "^6.0.0",
-    "@dfinity/utils": "^4.0.1"
+    "@dfinity/utils": "^4.0.1",
+    "@icp-sdk/auth": "^4.2.0",
+    "@icp-sdk/canisters": "^2.0.1",
+    "@icp-sdk/core": "^4.2.3"
   }
 }

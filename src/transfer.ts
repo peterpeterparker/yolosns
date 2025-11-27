@@ -1,7 +1,7 @@
-import { HttpAgent } from "@dfinity/agent";
-import { AuthClient } from "@dfinity/auth-client";
-import { IcrcLedgerCanister } from "@dfinity/ledger-icrc";
-import { Principal } from "@dfinity/principal";
+import { AuthClient } from "@icp-sdk/auth/client";
+import { IcrcLedgerCanister } from "@icp-sdk/canisters/ledger/icrc";
+import { HttpAgent } from "@icp-sdk/core/agent";
+import { Principal } from "@icp-sdk/core/principal";
 
 const createAuthClient = (): Promise<AuthClient> =>
   AuthClient.create({
